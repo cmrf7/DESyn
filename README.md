@@ -1,1 +1,1 @@
-# Detecting_DE_genes
+# DESyn function
