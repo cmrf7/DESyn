@@ -8,11 +8,11 @@ cc<-dim(obs)[1]
 lrt.pvalue<-c(NA)
 for (i in 1:cc){
 if (all(obs[i,]==0)) {loglik0.overal<-0
-}else {loglik0.overal<-fitdist(obs[i,],"nbinom",method="mle",control=list(maxit=200000))$loglik}
+}else {loglik0.overal<-fitdist(obs[i,],"nbinom",method="mle",control=list(maxit=2000000))$loglik}
 if (all(obs[i,group==0]==0)) {loglik0.control<-0
-}else {loglik0.control<-fitdist(obs[i,group==0],"nbinom",method="mle",control=list(maxit=200000))$loglik}
+}else {loglik0.control<-fitdist(obs[i,group==0],"nbinom",method="mle",control=list(maxit=2000000))$loglik}
 if (all(obs[i,group==1]==0)) {loglik0.case<-0
-}else {loglik0.case<-fitdist(obs[i,group==1],"nbinom",method="mle",control=list(maxit=200000))$loglik}
+}else {loglik0.case<-fitdist(obs[i,group==1],"nbinom",method="mle",control=list(maxit=2000000))$loglik}
 lrt.stat<--2*(loglik0.overal-loglik0.control-loglik0.case)
 lrt.pvalue[i]<-1-pchisq(lrt.stat,df=2)
 }
@@ -30,11 +30,11 @@ dm2<-DGEList(counts=obs[,grp==2],lib.size=rep(1,repli2),norm.factors=rep(1,repli
 disp.case<-estimateDisp(dm2)$tagwise.dispersion
 for (i in 1:cc){
 if (all(obs[i,]==0)) {loglik.overal<-0
-}else {loglik.overal<-fitdist(obs[i,],"nbinom",method="mle",fix.arg=list(size=1/disp.overal[i]),control=list(maxit=200000))$loglik}
+}else {loglik.overal<-fitdist(obs[i,],"nbinom",method="mle",fix.arg=list(size=1/disp.overal[i]),control=list(maxit=2000000))$loglik}
 if (all(obs[i,grp==1]==0)) {loglik.control<-0
-}else {loglik.control<-fitdist(obs[i,grp==1],"nbinom",method="mle",fix.arg=list(size=1/disp.control[i]),control=list(maxit=200000))$loglik}
+}else {loglik.control<-fitdist(obs[i,grp==1],"nbinom",method="mle",fix.arg=list(size=1/disp.control[i]),control=list(maxit=2000000))$loglik}
 if (all(obs[i,grp==2]==0)) {loglik.case<-0
-}else {loglik.case<-fitdist(obs[i,grp==2],"nbinom",method="mle",fix.arg=list(size=1/disp.case[i]),control=list(maxit=200000))$loglik}
+}else {loglik.case<-fitdist(obs[i,grp==2],"nbinom",method="mle",fix.arg=list(size=1/disp.case[i]),control=list(maxit=2000000))$loglik}
 proposed.stat[i,j]<--2*(loglik.overal-loglik.control-loglik.case)
 }
 }
@@ -43,7 +43,7 @@ for (i in 1:cc){
 pvalue[i]<-sum(null.stat>proposed.stat[i,1])/dim(null.stat)[1]/dim(null.stat)[2]
 }
 
-qvalue<-q.value(proposed.pvalue)
+qvalue<-q.value(pvalue)
 
 return(cbind(geneid,pvalue,qvalue))
 }
