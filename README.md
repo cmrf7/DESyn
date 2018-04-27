@@ -20,7 +20,7 @@
    Note: We recommend to have at least 3 samples from each group.
 
 4. Value: 
-   (2). geneID: a vector containing geneID in the dataset.
+   (1). geneID: a vector containing geneID in the dataset.
    (2). pvalue: p-value of genes.
    (3). qvalue: q-value of genes.
 
