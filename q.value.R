@@ -1,5 +1,3 @@
-
-
 q.value=function(p, lambda=seq(0,0.95,0.05)) {
 #
 #This is Storey and Tibshirani's (PNAS, 2003) default method
@@ -25,4 +23,3 @@ q.value=function(p, lambda=seq(0,0.95,0.05)) {
   }
   return(qvalue)
 }
-
