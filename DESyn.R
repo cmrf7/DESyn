@@ -18,7 +18,7 @@ lrt.pvalue[i]<-1-pchisq(lrt.stat,df=2)
 }
 ###################################Proposed########################################################################
 proposed.pvalue<-c(NA)
-proposed.stat<-matrix(c(NA),nrow=cc,ncol=(choose(length(group),repli1)/2))
+proposed.stat<-matrix(c(NA),nrow=cc,ncol=(choose(length(group),repli1)))
 for (j in 1:(choose(length(group),repli1))){
 grp<-rep(2,length(group))
 grp[combn(length(group),repli1)[,j]]<-1
