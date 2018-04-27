@@ -1,6 +1,6 @@
 DESyn<-function(data,group){
 geneid<-data[,1]
-obs<-data[,-1]
+obs<-as.matrix(data[,-1])
 repli1<-sum(group==0)
 repli2<-sum(group==1)
 cc<-dim(obs)[1]
