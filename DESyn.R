@@ -44,6 +44,6 @@ pvalue[i]<-sum(null.stat>proposed.stat[i,1])/dim(null.stat)[1]/dim(null.stat)[2]
 }
 
 qvalue<-q.value(pvalue)
-
-return(cbind(geneid,pvalue,qvalue))
+out<-data.frame(geneid=geneid,pvalue=pvalue,qvalue=qvalue)
+return(out)
 }
