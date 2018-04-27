@@ -2,9 +2,9 @@
    Detecting differentially expressed genes.
 
 2. Usage:
-   (1). Install packages: "edgeR" and "fitdistrplus" in R (>=3.2.0).
-   (2). Run "q.value" function.
-   (3). Call DESyn(data, group).
+(1). Install packages: "edgeR" and "fitdistrplus" in R (>=3.2.0).
+(2). Run "q.value" function.
+(3). Call DESyn(data, group).
 
 3. Arguments of DESyn:
    (1). data: a data frame containing gene IDs and normalized counts. The first column gives gene ID's, and the other columns provide normalized counts.
