@@ -39,8 +39,9 @@ proposed.stat[i,j]<--2*(loglik.overal-loglik.control-loglik.case)
 }
 }
 null.stat<-proposed.stat[lrt.pvalue>=0.1,]
+index<-which(rowSums(t(combn(8,4)==which(group==0)))==4)
 for (i in 1:cc){
-pvalue[i]<-sum(null.stat>proposed.stat[i,1])/dim(null.stat)[1]/dim(null.stat)[2]
+pvalue[i]<-sum(null.stat>proposed.stat[i,index])/dim(null.stat)[1]/dim(null.stat)[2]
 }
 
 qvalue<-q.value(pvalue)
